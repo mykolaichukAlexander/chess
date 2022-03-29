@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body onload="drawMoves('[]')">
+<script src="/js/index.js"></script>
+
+
+<div class="split left">
+    <div class="centered">
+
+        <h2 th:utext="${msg}"></h2>
+
+        <form id="inputForm"
+              th:action="@{/calculatePath}"
+              th:object="${pathRequest}" method="POST">
+
+            <label>
+                Start point:
+                <input type="text" th:field="*{start}" placeholder="For example: A1, B2" required/>
+            </label>
+            <br/>
+            <label>
+                End point:
+                <input type="text" th:field="*{end}" placeholder="For example: C5, F7" required/>
+            </label>
+            <br/>
+            <label>
+                Filter paths through same point <input type="checkbox" th:field="*{withUniq}"/>
+            </label>
+            <br/>
+
+            <input type="submit" value="Calculate path"/>
+            <input type="button" onclick="resetData()" value="Reset form">
+        </form>
+
+        <table border="1">
+            <tr>
+                <th>Path</th>
+                <th>Moves</th>
+            </tr>
+            <tr th:each="path : ${paths}"
+                th:boardIndexes="${path.boardIndexes}"
+                onclick="drawMoves(this.getAttribute('boardIndexes'))">
+                <td th:utext="${path.path}">...</td>
+                <td th:utext="${path.length}">...</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="split right">
+    <div class="centered">
+        <h2>Chess board</h2>
+        <div id="mainChessBoard" class="mainChessBoard"></div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

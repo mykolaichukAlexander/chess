@@ -1,0 +1,66 @@
+h1 {
+    color:#0000FF;
+}
+
+h2 {
+    color: #070404;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+
+label {
+    margin-bottom: 20px;
+}
+
+table th, table td {
+
+}
+
+div{
+    width:40px;
+    height:40px;
+    float: left;
+}
+
+.mainChessBoard {
+    width:320px;
+    height:320px;
+    border:1px solid burlywood;
+    margin: 0 auto;
+    float: revert;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: salmon;
+}
+
+.right {
+    right: 0;
+    background-color: lightseagreen;
+}
+
+.centered {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    align-items: center;
+}
